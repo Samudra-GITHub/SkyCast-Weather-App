@@ -8,7 +8,7 @@ Thanks for considering a contribution.
 git clone https://github.com/Samudra-GITHub/SkyCast-Weather-App.git
 cd SkyCast-Weather-App
 pip install -r requirements.txt
-export WEATHER_API_KEY=your_openweathermap_key
+export OPENWEATHER_API_KEY=your_openweathermap_key
 python app.py
 ```
 
@@ -18,7 +18,7 @@ Manually verify the app runs and a city search returns current weather, forecast
 
 ## Scope
 
-- If your change touches `app.py`'s API key handling, remove the hardcoded fallback rather than adding to it.
+- Never commit API keys. `app.py` reads `OPENWEATHER_API_KEY` from the environment and has no fallback; keep it that way.
 - Frontend changes belong in `templates/index.html`.
 
 ## Reporting issues

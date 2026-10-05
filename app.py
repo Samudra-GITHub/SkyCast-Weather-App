@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-API_KEY = os.environ.get('WEATHER_API_KEY', 'a0e38caf6c6e33fe1904caae30007613')
+API_KEY = os.environ.get("OPENWEATHER_API_KEY")
 BASE = "https://api.openweathermap.org"
 
 
@@ -13,6 +13,12 @@ def fetch_weather(city):
     Fetches current weather, 5-day/3-hour forecast, UV index, and AQI.
     Returns a single dict with all data needed by the frontend, or None on error.
     """
+
+    if not API_KEY:
+        raise RuntimeError(
+            "OPENWEATHER_API_KEY is not set. Copy .env.example, add your "
+            "OpenWeatherMap key and export it before starting the app."
+        )
 
     # ── 1. Current weather ──────────────────────────────────────────────────
     cur_resp = requests.get(
@@ -163,7 +169,10 @@ def api_weather():
     city = request.args.get("city", "").strip()
     if not city:
         return jsonify({"error": "city required"}), 400
-    data = fetch_weather(city)
+    try:
+        data = fetch_weather(city)
+    except RuntimeError as exc:
+        return jsonify({"error": str(exc)}), 503
     if data is None:
         return jsonify({"error": "city not found"}), 404
     return jsonify(data)
