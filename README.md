@@ -1,6 +1,22 @@
+<div align="center">
+
 # SkyCast
 
-> A single-screen weather dashboard: current conditions, forecast, UV and air quality for any city, served by a small Flask app.
+**One screen of weather: conditions, forecast, UV and air quality for any city.**
+
+Flask backend · OpenWeatherMap · animated sky canvas · JSON endpoint
+
+<br />
+
+**[Overview](#overview)** &nbsp;·&nbsp; **[Features](#features)** &nbsp;·&nbsp; **[Getting started](#getting-started)** &nbsp;·&nbsp; **[Architecture](#architecture)** &nbsp;·&nbsp; **[Structure](#project-structure)**
+
+<br />
+
+![Python](https://img.shields.io/badge/Python-3-3776ab?style=flat-square&logo=python&logoColor=white) ![Flask](https://img.shields.io/badge/Flask-backend-000000?style=flat-square&logo=flask&logoColor=white) ![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-API-eb6e4b?style=flat-square&logo=openweathermap&logoColor=white) ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
+</div>
+
+---
 
 ## Overview
 
@@ -32,7 +48,6 @@ SkyCast-Weather-App/
 ├── app.py              # Flask app: routes and OpenWeatherMap integration
 ├── templates/
 │   └── index.html      # Entire front end (markup, styles, scripts)
-├── assets/             # README placeholder graphics
 ├── requirements.txt    # Flask, requests, gunicorn
 ├── .env.example        # Environment variable template
 └── README.md
@@ -89,10 +104,6 @@ Type a city into the search box. The page calls `/api/weather?city=<name>` and r
 ## Deployment
 
 No deployment configuration is included. Gunicorn is in `requirements.txt`, so a typical setup is `gunicorn app:app` with `OPENWEATHER_API_KEY` set as an environment variable on the host.
-
-## Screenshots
-
-`assets/` holds placeholder graphics only, so no screenshots are shown.
 
 ## Future Improvements
 
